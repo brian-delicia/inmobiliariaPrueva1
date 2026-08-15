@@ -7,7 +7,8 @@ public class InquilinoController : Controller
     {
         Inquilino inquilino1 = new Inquilino();
         inquilino1.Dni=38439671;
-        inquilino1.NombreCompleto="brian delicia";
+        inquilino1.Nombre="brian";
+         inquilino1.Apellido="delicia";
         inquilino1.Telefono=266548789;
         inquilino1.Email="brian@gmmail.com";
         inquilino1.ListaReserva.Add("perro");
