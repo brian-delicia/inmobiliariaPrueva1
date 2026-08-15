@@ -10,6 +10,6 @@ public class Inquilino
 
     public String Email {get; set;} ="";
      
-    public List<String>ListaReserva {get; set;}= new List<String>();
+    public List<Reserva>ListaReserva {get; set;}= new List<Reserva>();
 
 }

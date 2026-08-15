@@ -11,7 +11,8 @@ public class InquilinoController : Controller
          inquilino1.Apellido="delicia";
         inquilino1.Telefono=266548789;
         inquilino1.Email="brian@gmmail.com";
-        inquilino1.ListaReserva.Add("perro");
+        
+        
        return View(inquilino1); 
         }
 }
