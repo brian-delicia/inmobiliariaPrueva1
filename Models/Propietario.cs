@@ -1,4 +1,4 @@
-using inmobiliariaPrueva1.Models;
+namespace inmobiliariaPrueva1.Models;
 
 public class Propietario
 {
