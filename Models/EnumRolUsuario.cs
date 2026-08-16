@@ -1,6 +1,6 @@
 namespace inmobiliariaPrueva1.Models;
 
-public enum RollUsuario
+public enum RolUsuario
 {
     Administrativo,
     Empleado

@@ -7,7 +7,9 @@ public class Usuario
 
      public String Contraseña {get; set; }="";
 
-     public RollUsuario Roll {get; set;}
+     public RolUsuario Rol {get; set;}
+
+     public List<Reserva> Reservas {get; set;} = new List<Reserva>();
      
 
 
