@@ -4,6 +4,6 @@ public enum TipoInmueble
 {
     Casa,
     Departamento,
-    MonoHambiente,
+    Monoambiente,
     Loft
 }

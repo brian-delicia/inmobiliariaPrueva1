@@ -9,8 +9,8 @@ public class PropietarioController : Controller
     {
         Propietario propietario1 = new Propietario();
         propietario1.Dni=32165498;
-        propietario1.nombre="javier";
-        propietario1.apellido="orco";
+        propietario1.Nombres="javier";
+        propietario1.Apellido="orco";
         propietario1.Telefono=266545659;
         propietario1.Email="orojavier@gmail.com";
         return View(propietario1);

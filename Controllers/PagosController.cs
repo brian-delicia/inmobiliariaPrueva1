@@ -5,7 +5,7 @@ public class PagosController : Controller
 {
     public IActionResult Index()
     {
-        Pagos pago1=new Pagos();
+        Pago pago1=new Pago();
         pago1.Id=1;
         pago1.FechaDePago= new DateTime(2026,8,15,19,30,0);
         pago1.PagoParcial=5.000m;

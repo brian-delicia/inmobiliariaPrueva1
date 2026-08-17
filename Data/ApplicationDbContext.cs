@@ -17,7 +17,7 @@ namespace inmobiliariaPrueva1.Data
 
         public DbSet<Reserva>Reservas {get; set;}
 
-        public DbSet<Pagos>Pagos {get; set; }
+        public DbSet<Pago>Pagos {get; set; }
         
         public DbSet<Usuario>Usuarios {get; set; }
         

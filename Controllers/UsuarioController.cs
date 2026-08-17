@@ -9,7 +9,7 @@ public class UsuarioController : Controller
         usuario1.Id=1;
         usuario1.Nombre="Esteban";
         usuario1.Contraseña="9qwe4587asd";
-        usuario1.Roll=RollUsuario.Administrativo;
+        usuario1.Rol=RolUsuario.Administrativo;
         return View(usuario1);
     }
 }
