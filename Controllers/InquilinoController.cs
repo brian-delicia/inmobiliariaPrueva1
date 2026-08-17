@@ -9,7 +9,7 @@ public class InquilinoController : Controller
         inquilino1.Dni=38439671;
         inquilino1.Nombres="brian";
          inquilino1.Apellido="delicia";
-        inquilino1.Telefono=266548789;
+        inquilino1.Telefono="266548789";
         inquilino1.Email="brian@gmmail.com";
         
         

@@ -1,18 +1,21 @@
 using Microsoft.AspNetCore.Mvc;
-using inmobiliariaPrueva1.Models;
+using inmobiliariaPrueva1.Data;
 
 
+namespace inmobiliariaPrueva1.Controllers{
 public class PropietarioController : Controller
 {
-    
+    private readonly ApplicationDbContext _context;
+
+    public PropietarioController(ApplicationDbContext context)
+        {
+            _context=context;
+        }
     public IActionResult Index()
     {
-        Propietario propietario1 = new Propietario();
-        propietario1.Dni=32165498;
-        propietario1.Nombres="javier";
-        propietario1.Apellido="orco";
-        propietario1.Telefono=266545659;
-        propietario1.Email="orojavier@gmail.com";
-        return View(propietario1);
+        var propietarios = _context.Propietarios.ToList();
+        
+        return View(propietarios);
     }
+}
 }

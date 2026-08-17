@@ -1,11 +1,15 @@
 <h1>Lista de propietarios</h1>
 <p>Bienvenidos a la seleccion de propietarios</p>
 
-@model Propietario
-<h1>Datos del propietario</h1>
-<p>Dni:@Model.Dni</p>
-<p>nombre:@Model.Nombres</p>
-<p>apellido:@Model.Apellido</p>
-<p>telefono:@Model.Telefono</p>
-<p>email:@Model.Email</p>
-<P>Lista de inmuebles:@Model.ListaInmuebles</P>
+@model List<inmobiliariaPrueva1.Models.Propietario>
+<h1> Propietarios</h1>
+@foreach (var propietario in Model){
+<div>
+    <p>Dni:@propietario.Dni</p>
+    <p>nombre:@propietario.Nombres</p>
+    <p>apellido:@propietario.Apellido</p>
+    <p>telefono:@propietario.Telefono</p>
+    <p>email:@propietario.Email</p>
+</div>
+
+}

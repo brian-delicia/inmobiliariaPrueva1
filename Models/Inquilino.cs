@@ -1,3 +1,5 @@
+using System.Numerics;
+
 namespace inmobiliariaPrueva1.Models;
 
 public class Inquilino
@@ -6,7 +8,7 @@ public class Inquilino
 
     public String Nombres{get; set;}="";
     public String Apellido{get; set;}="";
-    public int Telefono {get; set;}
+    public String Telefono {get; set;}="";
 
     public String Email {get; set;} ="";
      
