@@ -1,44 +1,103 @@
 using Microsoft.AspNetCore.Mvc;
-using inmobiliariaPrueva1.Data;
+using MySqlConnector;
 using inmobiliariaPrueva1.Models;
 
 
-namespace inmobiliariaPrueva1.Controllers{
-public class PropietarioController : Controller
-{
-    private readonly ApplicationDbContext _context;
+namespace inmobiliariaPrueva1.Controllers;
 
-    public PropietarioController(ApplicationDbContext context)
-        {
-            _context=context;
-        }
-    public IActionResult Index()
+public class PropietarioController: Controller
+{
+    private readonly string _connectionString;
+    public PropietarioController(IConfiguration configuration)
     {
-        var propietarios = _context.Propietarios.ToList();
-        
-        return View(propietarios);
+        _connectionString = configuration.GetConnectionString("DefaultConnection");
     }
 
+
+    
+    public IActionResult Index()
+    {
+        List<Propietario>propietarios = new List<Propietario>();
+
+        using var connection = new MySqlConnection(_connectionString);
+        
+        connection.Open();
+
+        string sql=""" 
+        SELECT Dni,Nombre,Apellido,Telefono,Email
+        FROM Propietarios 
+        
+        """;
+
+        using var command= new MySqlCommand(sql,connection);
+
+        using var reader=command.ExecuteReader();
+
+        while (reader.Read())
+        {
+            Propietario propietario =new Propietario();
+
+            propietario.Dni=reader.GetInt32("Dni");
+            propietario.Nombre=reader.GetString("Nombre");
+            propietario.Apellido=reader.GetString("Apellido");
+            propietario.Telefono=reader.GetString("Telefono");
+            propietario.Email=reader.GetString("Email");
+           
+           propietarios.Add(propietario);
+        }
+        return View(propietarios);
+    }
+    
+    [HttpGet]
     public IActionResult Create()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Create(Propietario propietario)
+    {
+        if(!ModelState.IsValid){
+       return View(propietario); }
+    
+        using var connection =new MySqlConnection(_connectionString);
+        connection.Open();
+
+        string sqlExiste="""
+        SELECT COUNT(*)
+        FROM propietarios
+        WHERE Dni=@Dni
+        """;
+        using var commandExiste=new MySqlCommand(sqlExiste,connection);
+        commandExiste.Parameters.AddWithValue("@Dni",propietario.Dni);
+
+        int cantidad= Convert.ToInt32(commandExiste.ExecuteScalar());
+        if (cantidad > 0)
         {
-            return View();
+            ModelState.AddModelError("Dni","El Dni ya esta registrado");
+            return View(propietario);
         }
 
-        [HttpPost]
-        public IActionResult Create(Propietario propietario)
-        {
-            if (_context.Propietarios.Any(p=>p.Dni==propietario.Dni))
-            {
-                ModelState.AddModelError("Dni","Ya existe un propietario con ese Dni");
-            }
-            if (!ModelState.IsValid)//valida los [Required] del modelo 
-            {
-                return View(propietario);
-            }
-            _context.Propietarios.Add(propietario);
-            _context.SaveChanges();
+        string sql = """
+        INSERT INTO Propietarios
+        (Dni, Nombre, Apellido, Telefono, Email)
+        VALUES
+        (@Dni, @Nombre, @Apellido, @Telefono, @Email)
+        """;
+        using var command= new MySqlCommand(sql,connection);
 
-            return RedirectToAction("Index");
+        command.Parameters.AddWithValue("@Dni",propietario.Dni);
+        command.Parameters.AddWithValue("@Nombre",propietario.Nombre);
+        command.Parameters.AddWithValue("@Apellido",propietario.Apellido);
+        command.Parameters.AddWithValue("@Telefono",propietario.Telefono);
+        command.Parameters.AddWithValue("@Email",propietario.Email);
+
+        command.ExecuteNonQuery();
+        
+        return RedirectToAction("Index");
+        
+        
         }
-}
-}
+        
+    }
+

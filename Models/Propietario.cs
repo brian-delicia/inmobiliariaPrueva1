@@ -22,7 +22,7 @@ public class Propietario
 
     [Required]
     [RegularExpression(@"^\d{10}$",
-    ErrorMessage ="El telefono puede tener 10 digitos ")]
+    ErrorMessage ="El telefono es numerico y puede tener 10 digitos ")]
     public String Telefono {get; set;}="";
     
     [Required]
