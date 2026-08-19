@@ -27,9 +27,17 @@ public class PropietarioController : Controller
         [HttpPost]
         public IActionResult Create(Propietario propietario)
         {
-            Console.WriteLine("ENTRO AL CREATE POST");
+            if (_context.Propietarios.Any(p=>p.Dni==propietario.Dni))
+            {
+                ModelState.AddModelError("Dni","Ya existe un propietario con ese Dni");
+            }
+            if (!ModelState.IsValid)//valida los [Required] del modelo 
+            {
+                return View(propietario);
+            }
             _context.Propietarios.Add(propietario);
             _context.SaveChanges();
+
             return RedirectToAction("Index");
         }
 }

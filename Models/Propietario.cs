@@ -1,14 +1,32 @@
-using System.Numerics;
+using System.ComponentModel.DataAnnotations;//importar validaciones de formulario 
 
+                                            
 namespace inmobiliariaPrueva1.Models;
 
 public class Propietario
 {
+    [Required]
+   [Range(10000000, 99999999,
+    ErrorMessage = "El DNI debe tener 8 números.")]
     public int Dni {get; set;}
-    public String Nombre{get; set;}="";
-    public String Apellido{get; set;}="";
-    public String Telefono {get; set;}="";
 
+    [Required]
+    [RegularExpression(@"^[a-zA-ZñÑ\s]+$",
+    ErrorMessage ="El nombre solo puede contener letras y espacios")]
+    public String Nombre{get; set;}="";
+
+    [Required]
+    [RegularExpression(@"^[a-zA-ZñÑ\s]+$",
+    ErrorMessage ="El apellido solo puede tener letras y espacios")]
+    public String Apellido{get; set;}="";
+
+    [Required]
+    [RegularExpression(@"^\d{10}$",
+    ErrorMessage ="El telefono puede tener 10 digitos ")]
+    public String Telefono {get; set;}="";
+    
+    [Required]
+    [EmailAddress]
     public String Email {get; set;}="";
     
     public List<Inmueble> ListaInmuebles {get; set;}=new List<Inmueble>();
