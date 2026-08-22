@@ -2,7 +2,7 @@ namespace inmobiliariaPrueva1.Models;
 
 public class Pago
 {
-    public int Id {get; set;}
+    public int IdPago {get; set;}
 
     public DateTime FechaDePago {get; set; }
 
@@ -11,6 +11,8 @@ public class Pago
     public decimal PagoTotal {get; set;}
 
     public TipoDePago Tipo {get; set;}
+
+     public Boolean Estado {get; set;}
 
     public int IdReserva {get; set;}
     public Reserva Reserva  {get; set;}=new Reserva();

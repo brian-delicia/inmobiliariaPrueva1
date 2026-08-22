@@ -5,8 +5,9 @@ namespace inmobiliariaPrueva1.Models;
 
 public class Propietario
 {
+    public int IdPropietario {get; set;}
     [Required]
-   [Range(10000000, 99999999,
+    [Range(10000000, 99999999,
     ErrorMessage = "El DNI debe tener 8 números.")]
     public int Dni {get; set;}
 
@@ -28,6 +29,8 @@ public class Propietario
     [Required]
     [EmailAddress]
     public String Email {get; set;}="";
+
+     public Boolean Estado {get; set;}
     
     public List<Inmueble> ListaInmuebles {get; set;}=new List<Inmueble>();
     

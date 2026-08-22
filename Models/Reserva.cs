@@ -2,7 +2,7 @@ namespace inmobiliariaPrueva1.Models;
 
 public class Reserva
 {
-    public int Id {get; set;} 
+    public int IdReserva {get; set;} 
     public Inquilino Inquilino{get;set;}=new Inquilino();
     
     public int IdInquilino {get; set;} 
@@ -16,6 +16,8 @@ public class Reserva
     public DateTime FechaInicio{get; set;}
 
     public DateTime FechaFin{get; set;}
+
+     public Boolean Estado {get; set;}
 
 
     public List<Pago>Pagos {get; set;}=new List<Pago>();
