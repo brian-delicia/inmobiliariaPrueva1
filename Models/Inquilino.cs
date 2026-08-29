@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.Numerics;
 
 namespace inmobiliariaPrueva1.Models;
@@ -5,15 +6,24 @@ namespace inmobiliariaPrueva1.Models;
 public class Inquilino
 {
     public int IdInquilino {get; set;}
+    [Required]
+    [Range(10000000,99999999,ErrorMessage ="El Dni debe tener 8 digitos")]
+
     public int Dni {get; set;}
-
+    [Required]
+    [RegularExpression(@"^[a-zA-ZñÑ\s]+$",ErrorMessage ="El nombre solo acepta letras y espacios")]
     public String Nombre{get; set;}="";
+    [Required]
+    [RegularExpression(@"^[a-zA-ZñÑ\s]+$",ErrorMessage ="El Apellido solo acepta letras y espacios")]
     public String Apellido{get; set;}="";
+    [Required]
+    [RegularExpression(@"^\d{10}$",ErrorMessage ="El telefono es numerico y puede tener 10 digitos")]
     public String Telefono {get; set;}="";
-
+    [Required]
+    [EmailAddress]
     public String Email {get; set;} ="";
 
-    public Boolean Estado {get; set;}
+    public Boolean Estado {get; set;}=true;
      
     public List<Reserva>ListaReservas {get; set;}= new List<Reserva>();
 

@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using inmobiliariaPrueva1.Data;
 using inmobiliariaPrueva1.Services;
 using inmobiliariaPrueva1.DaoMySQL;
 var builder = WebApplication.CreateBuilder(args);
@@ -7,14 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-//coneccion a la DB
-/*builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(
-    builder.Configuration.GetConnectionString("DefaultConnection"),
-    ServerVersion.AutoDetect(
-        builder.Configuration.GetConnectionString("DefaultConnection")
-    )
-)
-);*/
+
+
 builder.Services.AddScoped<PropietarioService>();
 builder.Services.AddScoped<PropietarioDAO>(sp=>
 {  

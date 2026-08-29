@@ -30,7 +30,7 @@ public class Propietario
     [EmailAddress]
     public String Email {get; set;}="";
 
-     public Boolean Estado {get; set;}
+     public Boolean Estado {get; set;}=true;
     
     public List<Inmueble> ListaInmuebles {get; set;}=new List<Inmueble>();
     
