@@ -66,7 +66,7 @@ public List<Propietario> ObtenerDadosDeBaja()
         {
             Propietario propietario =new Propietario()
             {
-                       IdPropietario = reader.GetInt32("IdPropietario"),
+            IdPropietario = reader.GetInt32("IdPropietario"),
             Dni = reader.GetInt32("Dni"),
             Nombre = reader.GetString("Nombre"),
             Apellido = reader.GetString("Apellido"),
@@ -140,16 +140,16 @@ public void Crear(Propietario propietario)
 
 public Propietario? ObtenerPorId(int IdPropietario)  //? puede devolver un propietario o null
     {
-        using var conection=new MySqlConnection(_connectionString);
+        using var connection=new MySqlConnection(_connectionString);
         
-        conection.Open();
+        connection.Open();
 
         string sql="""
                 SELECT IdPropietario,Dni,Nombre,Apellido,Telefono,Email,Estado
                 FROM Propietarios 
                 WHERE IdPropietario = @IdPropietario 
                 """;
-        using var command=new MySqlCommand(sql,conection);
+        using var command=new MySqlCommand(sql,connection);
 
         command.Parameters.AddWithValue("@IdPropietario",IdPropietario);
 
@@ -218,7 +218,7 @@ public void DarDeBaja(int idPropietario)
         command.ExecuteNonQuery();
     }
 
-public void Reactivar(int IdPropietario)
+public void Reactivar(int idPropietario)
     {
         using var connection= new MySqlConnection(_connectionString);
         connection.Open();
@@ -230,7 +230,7 @@ public void Reactivar(int IdPropietario)
         """;
         using var command=new MySqlCommand(sql,connection);
         
-        command.Parameters.AddWithValue("@IdPropietario",IdPropietario);
+        command.Parameters.AddWithValue("@IdPropietario",idPropietario);
         
         command.ExecuteNonQuery();
     }
