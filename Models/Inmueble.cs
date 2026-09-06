@@ -13,7 +13,7 @@ public class Inmueble
     [Range(1,20,ErrorMessage ="La capacidad maxima es 20")]
     public int Capacidad {get; set;}
     [Required]
-    public  TipoInmueble Tipo {get; set;}
+    public  TipoInmueble Tipo {get; set;}=new TipoInmueble();
     [Required]
     [Range(-90,90,ErrorMessage ="La latitud debe estar entre -90 y 90")]
     public float Latitud {get; set;}

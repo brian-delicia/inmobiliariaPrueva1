@@ -15,6 +15,11 @@ public class PropietarioService
     {
         return _dao.ObtenerTodos();
     }
+    
+    public List<Propietario> ObtenerDadosDeBaja()
+    {
+        return _dao.ObtenerDadosDeBaja();
+    }
     public bool ExisteDni(int dni)
     {
         return _dao.ExisteDni(dni) ;
@@ -25,4 +30,25 @@ public class PropietarioService
          _dao.Crear(propietario);
     }
 
+    public Propietario? ObtenerPorId(int IdPropietario)
+    {
+        return _dao.ObtenerPorId(IdPropietario);
+    }
+    public bool ExisteDniEnOtroPropietario(int dni, int IdPropietario)
+    {
+        return _dao.ExisteDniEnOtroPropietario( dni, IdPropietario);
+    }
+    public void Actualizar(Propietario propietario)
+    {
+        _dao.Actualizar(propietario);
+    }
+
+    public void DarDeBaja(int idPropietario)
+    {
+        _dao.DarDeBaja(idPropietario);
+    }
+    public void Reactivar(int IdPropietario)
+    {
+        _dao.Reactivar(IdPropietario);
+    }
 }

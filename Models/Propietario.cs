@@ -7,8 +7,8 @@ public class Propietario
 {
     public int IdPropietario {get; set;}
     [Required]
-    [Range(10000000, 99999999,
-    ErrorMessage = "El DNI debe tener 8 números.")]
+    [Range(1000000, 99999999,
+    ErrorMessage = "El DNI puede tener entre 7y8 números.")]
     public int Dni {get; set;}
 
     [Required]
@@ -22,8 +22,8 @@ public class Propietario
     public String Apellido{get; set;}="";
 
     [Required]
-    [RegularExpression(@"^\d{10}$",
-    ErrorMessage ="El telefono es numerico y puede tener 10 digitos ")]
+    [RegularExpression(@"^\d{10,15}$",
+    ErrorMessage ="El telefono es numerico y puede tener entre 10 y 15 digitos ")]
     public String Telefono {get; set;}="";
     
     [Required]
